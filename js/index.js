@@ -3,19 +3,15 @@
 function updateSubtotal(product) {
   // console.log("Calculating subtotal, yey!");
   // Get DOM Element
-  let price = document.querySelector(".price span");
-  let quantity = document.querySelector(".quantity input");
-  let subTotal = document.querySelector(".subtotal span");
+  let price = product.querySelector(".price span");
+  let quantity = product.querySelector(".quantity input");
+  let subTotal = product.querySelector(".subtotal span");
 
-  let priceDigit = price.innerHTML;
-  let quantityDigit = Number(quantity.value);
-
-  let total = quantityDigit * priceDigit;
+  let total = Number(quantity.value) * price.innerHTML;
 
   subTotal.innerHTML = total;
   return total;
 }
-// updateSubtotal();
 
 function calculateAll() {
   // code in the following two lines is added just for testing purposes.
