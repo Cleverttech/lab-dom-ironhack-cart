@@ -1,37 +1,42 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
-  console.log("Calculating subtotal, yey!");
-
+  // console.log("Calculating subtotal, yey!");
+  // Get DOM Element
   let price = document.querySelector(".price span");
   let quantity = document.querySelector(".quantity input");
   let subTotal = document.querySelector(".subtotal span");
-  let total = Number(quantity.value * price.innerHTML);
-  console.log(total);
-  subTotal.innerText = total;
+
+  let priceDigit = price.innerHTML;
+  let quantityDigit = Number(quantity.value);
+
+  let total = quantityDigit * priceDigit;
+
+  subTotal.innerHTML = total;
   return total;
 }
-updateSubtotal();
+// updateSubtotal();
 
 function calculateAll() {
   // code in the following two lines is added just for testing purposes.
   // it runs when only iteration 1 is completed. at later point, it can be removed.
   const singleProduct = document.querySelector(".product");
   updateSubtotal(singleProduct);
-
-  let AllProducts = document.querySelectorAll(".product");
-  let product = 0;
-  AllProducts.forEach((el) => {
-    updateSubtotal(el);
-    product += updateSubtotal(el);
-  });
-  let subTotal1 = document.querySelector("#total span");
-  subTotal1.innerText = product;
-  // updateSubtotal(product);
-
   // ITERATION 2
 
+  let productSum = 0;
+
+  let allProducts = document.querySelectorAll(".product");
+
+  allProducts.forEach((el) => {
+    productSum += updateSubtotal(el);
+  });
+
+  // updateSubtotal(product);
+
   // ITERATION 3
+  let totalVal = document.querySelector("#total-value");
+  totalVal.innerText = productSum;
 }
 calculateAll();
 // ITERATION 4
@@ -58,6 +63,6 @@ window.addEventListener("load", () => {
   calculatePricesBtn.addEventListener("click", calculateAll);
 
   //... your code goes here
-  const createProduct = document.querySelector("#create");
-  createProduct.addEventListener("click", createProduct);
+  // const createProduct = document.querySelector("#create");
+  // createProduct.addEventListener("click", createProduct);
 });
